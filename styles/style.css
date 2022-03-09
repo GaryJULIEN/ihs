@@ -1,0 +1,79 @@
+@font-face {
+    font-family: "COOLVETICA";
+    src: url("../assets/fonts/COOLVETICA.woff");
+}
+
+body {
+    position: relative;
+    width: 100%;
+    overflow: scroll;
+    padding: 0;
+    margin: 0;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+#content-page {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 3000vh;
+    background-image: url(../assets/imgs/ELEMENTS.png);
+    background-position: center;
+    background-repeat: repeat;
+    background-size: 50%;
+    background-attachment: fixed;
+}
+
+
+
+/********************************** LOGO *******************************/
+
+
+.page-logo {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0vw;
+    right: 0vw;
+    width: 334px;
+    z-index: 9999;
+    transform: scale(1.5) translate(-40%, 8%);
+    user-select: none;
+    padding: 20vw;
+    align-self: flex-end;
+}
+
+.page-logo .line p {
+    line-height: 74px;
+    width: auto;
+    font-family: COOLVETICA, sans-serif;
+    letter-spacing: -3px;
+    font-size: 100px;
+    text-align: right;
+    color: white;
+}
+
+.page-logo .line:first-child {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.page-logo .sound-bars {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding-right: 4px;
+    width: 255px;
+}
+.page-logo .sound-bars .frequence-bar {
+    width: 4px;
+    margin: 0 1px;
+    background-color: #e9292a;
+}
+
