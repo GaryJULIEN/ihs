@@ -1,45 +1,75 @@
 "use strict";
-// VARIABLES GLOBALES //
-let yOffset = 0;
-let flowAnimation = 0;
+/**
+ * Allow us to use scrollTrigger with GSAP
+ */
+gsap.registerPlugin(ScrollTrigger);
 
-// *******************   LOGO   *********************
 
-
+/**
+ * HTML ELEMNTS
+ * @type {Element}
+ */
 const logoElt = document.querySelector('.page-logo');
 const soundBarsElt = logoElt.querySelector('.sound-bars');
-// Création et insertion : SoundBars du LOGO
-const sizesFrequenceBar = [
-    37.5, 56, 47.5, 37.5, 29, 65, 57, 53, 47, 34, 58, 74, 63, 61, 52, 48, 44, 39, 34, 64, 74, 53, 46.5, 43, 46.5, 43, 37, 17, 74, 26, 27.5, 43.5, 53.5, 59, 64, 66.5, 56.5, 52.5, 47.5, 42.5, 35, 59, 54, 44.5, 31.5, 28, 32.5, 47, 56, 37];
 
+/**
+ * VARIABLES FOR LOGO
+ * @type {number}
+ */
+let yOffset = 0;
+let flowAnimation = 0;
+const originalSizesFrequenceBar = [
+    37.5, 56, 47.5, 37.5, 29, 65, 57, 53, 47, 34, 58, 74, 63, 61, 52, 48, 44, 39, 34, 64, 74, 53, 46.5, 43, 46.5, 43, 37, 17, 74, 26, 27.5, 43.5, 53.5, 59, 64, 66.5, 56.5, 52.5, 47.5, 42.5, 35, 59, 54, 44.5, 31.5, 28, 32.5, 47, 56, 37];
+let cloneSizesFrequenceBar = [...originalSizesFrequenceBar];
+
+/**
+ * Resets logo variables
+ */
+const resetLogoVariables = () => {
+    cloneSizesFrequenceBar = [...originalSizesFrequenceBar];
+    yOffset = 0;
+    flowAnimation = 0;
+}
+
+/**
+ * Create logo depending to cloneSizesFrequenceBar items
+ */
 const createFrequencyElts = () => {
     soundBarsElt.innerHTML = "";
-    for (const item of sizesFrequenceBar) {
+    for (const item of cloneSizesFrequenceBar) {
         const frequenceELt = document.createElement('div');
         frequenceELt.classList.add('frequence-bar');
         frequenceELt.style.height = `${item}px`
         soundBarsElt.appendChild(frequenceELt);
     }
 };
-createFrequencyElts();
 
-// Animation des SoundBars
-document.addEventListener('scroll', () => {
-    if (flowAnimation % 2 === 0) {
-        if (yOffset < window.scrollY) {
-            const lastItem = sizesFrequenceBar.pop();
-            sizesFrequenceBar.unshift(lastItem);
-        } else {
-            const firstItem = sizesFrequenceBar.shift();
-            sizesFrequenceBar.push(firstItem);
-        }
+/**
+ * VANILLA ANIMATIONS
+ */
+const animateLogo = () => {
+    if (window.scrollY === 0) {
+        resetLogoVariables();
         createFrequencyElts();
+    } else {
+        if (flowAnimation % 2 === 0) {
+            if (yOffset < window.scrollY) {
+                const lastItem = cloneSizesFrequenceBar.pop();
+                cloneSizesFrequenceBar.unshift(lastItem);
+            } else {
+                const firstItem = cloneSizesFrequenceBar.shift();
+                cloneSizesFrequenceBar.push(firstItem);
+            }
+            createFrequencyElts();
+        }
+        yOffset = window.scrollY;
+        flowAnimation++;
     }
-    yOffset = window.scrollY;
-    flowAnimation++;
-});
+}
 
-gsap.registerPlugin(ScrollTrigger);
+/**
+ * GSAP ANIMATIONS
+ */
 
 const tl = gsap.timeline({
     scrollTrigger: {
@@ -58,4 +88,29 @@ tl.to(".page-logo", {
     y: 0,
     padding: 0
 });
+
+
+
+
+
+/**
+ * ************************ Init App ************************ *
+ */
+const init = () => {
+    createFrequencyElts();
+
+    /**
+     * HANDLE SCROLL EVENT
+     */
+    document.addEventListener('scroll', () => {
+        animateLogo();
+    });
+}
+
+
+
+/**
+ **************************************************************** LAUNCHING  🚀🚀🚀
+ */
+init();
 
