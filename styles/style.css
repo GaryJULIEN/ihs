@@ -25,9 +25,11 @@ body::-webkit-scrollbar {
     background-image: url(../assets/imgs/ELEMENTS.png);
     background-position: center;
     background-repeat: repeat;
-    background-size: 50%;
     background-attachment: fixed;
+    background-size: 80%;
 }
+
+
 
 
 
@@ -35,16 +37,23 @@ body::-webkit-scrollbar {
 
 
 .page-logo {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0vw;
-    right: 0vw;
-    width: 334px;
-    z-index: 9999;
-    transform: scale(1.5) translate(-40%, 8%);
+    position: fixed;
+    top: 30%;
+    right: 40%;
     user-select: none;
-    padding: 20vw;
-    align-self: flex-end;
+    width: fit-content;
+    padding: 0;
+}
+
+@media only screen and (max-width: 767px) {
+    /* smartphone */
+    #content-page {
+        background-size: 140%;
+    }
+    .page-logo {
+        left: 20px;
+    }
+
 }
 
 .page-logo .line p {
