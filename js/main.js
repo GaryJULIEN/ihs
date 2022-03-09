@@ -1,5 +1,7 @@
 "use strict";
-
+// VARIABLES GLOBALES //
+let yOffset = 0;
+let flowAnimation = 0;
 
 // *******************   LOGO   *********************
 
@@ -22,11 +24,20 @@ const createFrequencyElts = () => {
 createFrequencyElts();
 
 // Animation des SoundBars
-const soundBarsAnimation = document.addEventListener('scroll', () => {
-    const dernierElt = sizesFrequenceBar.pop();
-    sizesFrequenceBar.unshift(dernierElt);
-    createFrequencyElts();
-})
+document.addEventListener('scroll', () => {
+    if (flowAnimation % 2 === 0) {
+        if (yOffset < window.scrollY) {
+            const lastItem = sizesFrequenceBar.pop();
+            sizesFrequenceBar.unshift(lastItem);
+        } else {
+            const firstItem = sizesFrequenceBar.shift();
+            sizesFrequenceBar.push(firstItem);
+        }
+        createFrequencyElts();
+    }
+    yOffset = window.scrollY;
+    flowAnimation++;
+});
 
 gsap.registerPlugin(ScrollTrigger);
 
