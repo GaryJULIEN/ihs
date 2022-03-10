@@ -88,8 +88,8 @@ const isMobile = window.innerWidth < 767;
 // tl.to(".page-logo", {
 //     scale: 0.5,
 //     margin: 0,
-//     x: "-120%",
-//     y: "-100%"
+//     left: 0,
+//     top: 0
 // });
 
 

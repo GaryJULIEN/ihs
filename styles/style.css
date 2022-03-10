@@ -1,6 +1,7 @@
 @font-face {
     font-family: "COOLVETICA";
     src: url("../assets/fonts/COOLVETICA.woff");
+    font-display: fallback;
 }
 
 body {
@@ -34,15 +35,16 @@ body::-webkit-scrollbar {
 
 /********************************** HEADER *******************************/
 
-.header {
+aside {
     user-select: none;
     display: flex;
+    flex-direction: column;
     align-self: flex-start;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     height: 100vh;
-    width: fit-content;
-    background-color: #e9292a1f;
+    width: 20%;
+    background-color: #44444763;
     position: fixed;
 }
 
@@ -50,18 +52,19 @@ body::-webkit-scrollbar {
 /* NAV */
 nav {
     align-items: center;
+    margin-bottom: 15%;
 }
 
 nav ul li {
     cursor: pointer;
     padding: 1rem;
+    font-size: 1.2rem;
 }
 
 
 /* LOGO */
 .page-logo {
-    position: fixed;
-    left: 42%;
+    transform: scale(0.5);
     user-select: none;
     width: fit-content;
     padding: 0;
@@ -70,7 +73,7 @@ nav ul li {
 .page-logo .line p {
     line-height: 74px;
     width: auto;
-    font-family: COOLVETICA, sans-serif;
+    font-family: COOLVETICA, -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     letter-spacing: -3px;
     font-size: 100px;
     text-align: right;
