@@ -11,6 +11,8 @@ body {
     margin: 0;
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: white;
 }
 
 body::-webkit-scrollbar {
@@ -20,6 +22,7 @@ body::-webkit-scrollbar {
 #content-page {
     display: flex;
     flex-direction: column;
+    align-items: center;
     position: relative;
     height: 3000vh;
     background-image: url(../assets/imgs/ELEMENTS.png);
@@ -29,31 +32,39 @@ body::-webkit-scrollbar {
     background-size: 80%;
 }
 
+/********************************** HEADER *******************************/
+
+.header {
+    user-select: none;
+    display: flex;
+    align-self: flex-start;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: fit-content;
+    background-color: #e9292a1f;
+    position: fixed;
+}
 
 
+/* NAV */
+nav {
+    align-items: center;
+}
+
+nav ul li {
+    cursor: pointer;
+    padding: 1rem;
+}
 
 
-/********************************** LOGO *******************************/
-
-
+/* LOGO */
 .page-logo {
     position: fixed;
-    top: 30%;
-    right: 40%;
+    left: 42%;
     user-select: none;
     width: fit-content;
     padding: 0;
-}
-
-@media only screen and (max-width: 767px) {
-    /* smartphone */
-    #content-page {
-        background-size: 140%;
-    }
-    .page-logo {
-        left: 20px;
-    }
-
 }
 
 .page-logo .line p {
@@ -86,3 +97,14 @@ body::-webkit-scrollbar {
     background-color: #e9292a;
 }
 
+
+@media only screen and (max-width: 767px) {
+    /* smartphone */
+    #content-page {
+        background-size: 140%;
+    }
+    .page-logo {
+        left: 20px;
+    }
+
+}

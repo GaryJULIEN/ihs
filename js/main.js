@@ -74,23 +74,23 @@ const animateLogo = () => {
  */
 const isMobile = window.innerWidth < 767;
 
-const tl = gsap.timeline({
-    scrollTrigger: {
-        trigger: ".page-logo",
-        start: "-30% top",
-        end: "+=100%",
-        toggleAction: "play none reverse none",
-        scrub: 1.5,
-        markers: true,
-    }
-});
+// const tl = gsap.timeline({
+//     scrollTrigger: {
+//         trigger: ".page-logo",
+//         start: "-20% top",
+//         end: "+=100%",
+//         toggleAction: "play none reverse none",
+//         scrub: 1.5,
+//         markers: true,
+//     }
+// });
 
-tl.to(".page-logo", {
-    scale: 0.5,
-    margin: 0,
-    x: isMobile ? "30%" : "240%",
-    y: "-130%"
-});
+// tl.to(".page-logo", {
+//     scale: 0.5,
+//     margin: 0,
+//     x: "-120%",
+//     y: "-100%"
+// });
 
 
 
