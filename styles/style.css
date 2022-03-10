@@ -33,7 +33,7 @@ body::-webkit-scrollbar {
     background-size: 80%;
 }
 
-/********************************** HEADER *******************************/
+/*****************   ASIDE   ***************/
 
 aside {
     user-select: none;
@@ -54,7 +54,6 @@ nav {
     align-items: center;
     margin-bottom: 15%;
 }
-
 nav ul li {
     cursor: pointer;
     padding: 1rem;
@@ -69,7 +68,6 @@ nav ul li {
     width: fit-content;
     padding: 0;
 }
-
 .page-logo .line p {
     line-height: 74px;
     width: auto;
@@ -79,13 +77,11 @@ nav ul li {
     text-align: right;
     color: white;
 }
-
 .page-logo .line:first-child {
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
-
 .page-logo .sound-bars {
     display: flex;
     justify-content: space-between;
@@ -98,6 +94,16 @@ nav ul li {
     width: 4px;
     margin: 0 1px;
     background-color: #e9292a;
+}
+
+
+
+
+/*****************   SECTION 1   ***************/
+
+.titre {
+    height: 100vh;
+    width: 60vw;
 }
 
 
