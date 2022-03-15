@@ -2,7 +2,7 @@
 /**
  * Allow us to use scrollTrigger with GSAP
  */
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, gsap);
 
 
 /**
@@ -74,17 +74,19 @@ const animateLogo = () => {
  */
 const isMobile = window.innerWidth < 767;
 
-const tl = gsap.timeline({
+// Animation initiale du logo
+const logoTl = gsap.timeline({
     scrollTrigger: {
-        trigger: ".page-logo",
-        start: "-30% top",
-        end: "+=100%",
+        id: "logo",
+        trigger: "#titre",
+        start: "top top",
+        end: "bottom top",
         toggleAction: "play none reverse none",
         scrub: 1.5,
         markers: true,
     }
 });
-tl.from(".page-logo", {
+logoTl.from(".page-logo", {
     scale: 1.5,
     x: "40vw",
     y: "35vh"
@@ -92,6 +94,69 @@ tl.from(".page-logo", {
 
 
 
+// Animation C'est
+// const cElt = document.querySelector('.c');
+// cElt.innerHTML = "<div class='lettre'>" + cElt.innerHTML.split("").join("</div><div class='lettre'>") + "</div>";
+
+// const cTl = gsap.timeline({
+//     scrollTrigger: {
+//         id: "c",
+//         trigger: "#titre",
+//         start: "+=50% top",
+//         end: "bottom top",
+//         toggleAction: "play none reverse none",
+//         scrub: 1,
+//         pin: true,
+//         markers: true
+//     }
+// })
+// cTl.from(".lettre", {
+//     scale: 1.5,
+//     opacity: 0,
+//     stagger: 1,
+//     y: 200,
+//     x: 300
+// }),
+//     cTl.to(".lettre", {
+//         color: "red",
+//         duration: 0.1,
+//         stagger: -0.1
+//     }),
+//     cTl.to(".lettre", {
+//         color: "white",
+//         stagger: -0.1
+//     }),
+//     cTl.to(".c", {
+//         scale: 0.5,
+//         duration: 0.1
+//     }),
+//     cTl.to(".c", {
+//         scale: 2,
+//         y: "2vh",
+//         opacity: 0
+//     });
+
+
+
+// Animation Equipe
+const equipeTitleElt = document.querySelector('.equipe-title');
+
+// const equipeTl = gsap.timeline({
+//     scrollTrigger: {
+//         id: "equipe",
+//         trigger: "#equipe",
+//         start: "top top",
+//         end: "center top",
+//         toggleAction: "play none reverse none",
+//         scrub: 1,
+//         markers: true
+//     }
+// })
+// equipeTl.from('.equipe-title',{
+//     opacity: 0,
+//     y: -500,
+//     scale: 2
+// });
 
 
 

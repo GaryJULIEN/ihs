@@ -5,6 +5,7 @@
 }
 
 body {
+    user-select: none;
     position: relative;
     width: 100%;
     overflow: scroll;
@@ -12,7 +13,8 @@ body {
     margin: 0;
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
-    font-family: -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
     color: white;
 }
 
@@ -33,10 +35,15 @@ body::-webkit-scrollbar {
     background-size: 80%;
 }
 
+a {
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+}
+
 /*****************   ASIDE   ***************/
 
 aside {
-    user-select: none;
     display: flex;
     flex-direction: column;
     align-self: flex-start;
@@ -44,10 +51,9 @@ aside {
     justify-content: space-between;
     height: 100vh;
     width: 20%;
-    background-color: #44444763;
+    background-color: #0a0a1694;
     position: fixed;
 }
-
 
 /* NAV */
 nav {
@@ -55,11 +61,9 @@ nav {
     margin-bottom: 15%;
 }
 nav ul li {
-    cursor: pointer;
     padding: 1rem;
     font-size: 1.2rem;
 }
-
 
 /* LOGO */
 .page-logo {
@@ -71,7 +75,8 @@ nav ul li {
 .page-logo .line p {
     line-height: 74px;
     width: auto;
-    font-family: COOLVETICA, -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: COOLVETICA, -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+        "Helvetica Neue", sans-serif;
     letter-spacing: -3px;
     font-size: 100px;
     text-align: right;
@@ -96,14 +101,88 @@ nav ul li {
     background-color: #e9292a;
 }
 
+/*****************   SECTIONS   ***************/
+
+section {
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    position: relative;
+    justify-content: flex-end;
+}
+
+/*   SECTION 2 : L'équipe  */
+
+/* C'est */
+.c {
+    padding: 3rem;
+    align-self: center;
+}
+.c div {
+    display: inline-block;
+    font-family: sans-serif;
+    font-size: 3em;
+    font-weight: 700;
+    position: relative;
+    text-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
 
 
+/* Equipe title */
+#equipe {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: center;
+}
+.equipe-title {
+    font-size: 4em;
+    font-weight: 700;
+    align-self: center;
+    transform: translate(-10vw 10vh);
+}
 
-/*****************   SECTION 1   ***************/
 
-.titre {
+/* Face-Cards */
+.face-cards-list {
+    margin: 2rem;
+    margin-top: 3rem;
+    display: flex;
+}
+.face-card-container {
+    width: 30vw;
+    background-color: #43424787;
+    padding: 2rem 1rem;
+    margin: 1rem;
+    box-shadow: 0px 0px 10px #7d7d80d9;
+}
+.face-card-container .name {
+    color: #e9292a;
+    text-shadow: 0px 0px 5px #0e0e18;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    padding-bottom: 1rem;
+}
+.face-card-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.face-card-img {
+    margin: 0.5rem;
+    padding-bottom: 1rem;
+}
+.face-card-sentence{
+    text-align: center;
+}
+
+/*  CLASSES DYNAMIQUES */
+
+.full-screen {
+    width: 80vw;
     height: 100vh;
-    width: 60vw;
+    align-self: flex-end;
 }
 
 
@@ -115,5 +194,4 @@ nav ul li {
     .page-logo {
         left: 20px;
     }
-
 }

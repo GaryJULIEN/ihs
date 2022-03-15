@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles/reset.css">
     <link rel="stylesheet" href="./styles/style.css">
     <title>InHarderStyle</title>
@@ -32,26 +35,75 @@
             <!-- NAVIGATION -->
             <nav>
                 <ul>
-                    <li>Accueil</li>
-                    <li>L'Equipe</li>
-                    <li>Actions</li>
-                    <li>Réseaux Sociaux</li>
-                    <li>Contact</li>
+                    <li><a href="#titre" class="anchor">Accueil</a></li>
+                    <li><a href="#equipe" class="anchor">L'Equipe</a></li>
+                    <li><a href="#video" class="anchor">Actions</a></li>
+                    <li><a href="#reseaux" class="anchor">Réseaux Sociaux</a></li>
+                    <li><a href="#contact" class="anchor">Contact</a></li>
                 </ul>
             </nav>
         </aside>
 
-        <section class="titre"></section>
-        <section class="equipe"></section>
-        <section class="video"></section>
-        <section class="reseaux"></section>
-        <section class="contact"></section>
+        <section id="titre" class="full-screen"></section>
+
+        <section id="equipe" class="full-screen">
+            <!-- <div class="c">C'est</div> -->
+            <div class="equipe-title">UNE EQUIPE</div>
+
+            <div class="face-cards-list">
+
+                <div class="face-card-container">
+
+                    <h2 class="name">Sylvain BRUN</h2>
+                    <div class="face-card-img">
+                        <img src="https://scontent-cdg2-1.xx.fbcdn.net/v/t39.30808-6/245481726_1534931236905450_6933942921873310011_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=730e14&_nc_ohc=sRbltLmSCxMAX-mtUHJ&_nc_ht=scontent-cdg2-1.xx&oh=00_AT8JUXqHyhAIz4qbMK-mhBjcXKB4CUA_xIH9ls9WWJ99Zg&oe=62333A67"
+                            alt="">
+                    </div>
+                    <p class="face-card-sentence">Augmente le son et bouge ton corps !</p>
+                </div>
+
+                <div class="face-card-container">
+                    <h2 class="name">Sylvain BRUN</h2>
+                    <div class="face-card-img">
+                        <img src="https://scontent-cdg2-1.xx.fbcdn.net/v/t39.30808-6/245481726_1534931236905450_6933942921873310011_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=730e14&_nc_ohc=sRbltLmSCxMAX-mtUHJ&_nc_ht=scontent-cdg2-1.xx&oh=00_AT8JUXqHyhAIz4qbMK-mhBjcXKB4CUA_xIH9ls9WWJ99Zg&oe=62333A67"
+                            alt="">
+                    </div>
+                    <p class="face-card-sentence">Augmente le son et bouge ton corps !</p>
+                </div>
+
+                <div class="face-card-container">
+                    <h2 class="name">Sylvain BRUN</h2>
+                    <div class="face-card-img">
+                        <img src="https://scontent-cdg2-1.xx.fbcdn.net/v/t39.30808-6/245481726_1534931236905450_6933942921873310011_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=730e14&_nc_ohc=sRbltLmSCxMAX-mtUHJ&_nc_ht=scontent-cdg2-1.xx&oh=00_AT8JUXqHyhAIz4qbMK-mhBjcXKB4CUA_xIH9ls9WWJ99Zg&oe=62333A67"
+                            alt="">
+                    </div>
+                    <p class="face-card-sentence">Augmente le son et bouge ton corps !</p>
+                </div>
+                <div class="face-card-container">
+                    <h2 class="name">Sylvain BRUN</h2>
+                    <div class="face-card-img">
+                        <img src="https://scontent-cdg2-1.xx.fbcdn.net/v/t39.30808-6/245481726_1534931236905450_6933942921873310011_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=730e14&_nc_ohc=sRbltLmSCxMAX-mtUHJ&_nc_ht=scontent-cdg2-1.xx&oh=00_AT8JUXqHyhAIz4qbMK-mhBjcXKB4CUA_xIH9ls9WWJ99Zg&oe=62333A67"
+                            alt="">
+                    </div>
+                    <p class="face-card-sentence">Augmente le son et bouge ton corps !</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="video" class="full-screen">
+            
+        </section>
+
+        <section id="reseaux" class="full-screen"></section>
+
+        <section id="contact" class="full-screen"></section>
 
     </div>
 
 
 
     <!---------------  SCRIPTS  --------------->
+    <script src="./js/ScrollToPlugin.min.js"></script>
     <script src="./js/ScrollTrigger.min.js"></script>
     <script src="./js/gsap.min.js"></script>
     <script src="./js/main.js"></script>
