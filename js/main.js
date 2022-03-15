@@ -1,21 +1,16 @@
 "use strict";
-/**
- * Allow us to use scrollTrigger with GSAP
- */
+
+// Allow us to use scrollTrigger with GSAP
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, gsap);
 
 
-/**
- * HTML ELEMNTS
- * @type {Element}
- */
+/*** HTML ELEMENTS * @type {Element} */
 const logoElt = document.querySelector('.page-logo');
 const soundBarsElt = logoElt.querySelector('.sound-bars');
+const videoContainerElt = document.getElementById('video-container');
+const infosMediasElt = document.getElementById('infos-medias');
 
-/**
- * VARIABLES FOR LOGO
- * @type {number}
- */
+/*** VARIABLES FOR LOGO * @type {number} */
 let yOffset = 0;
 let flowAnimation = 0;
 const originalSizesFrequenceBar = [
@@ -24,18 +19,14 @@ const originalSizesFrequenceBar = [
 ];
 let cloneSizesFrequenceBar = [...originalSizesFrequenceBar];
 
-/**
- * Resets logo variables
- */
+// Resets logo variables
 const resetLogoVariables = () => {
     cloneSizesFrequenceBar = [...originalSizesFrequenceBar];
     yOffset = 0;
     flowAnimation = 0;
 }
 
-/**
- * Create logo depending to cloneSizesFrequenceBar items
- */
+// Create logo depending to cloneSizesFrequenceBar items
 const createFrequencyElts = () => {
     soundBarsElt.innerHTML = "";
     for (const item of cloneSizesFrequenceBar) {
@@ -46,9 +37,7 @@ const createFrequencyElts = () => {
     }
 };
 
-/**
- * VANILLA ANIMATIONS
- */
+/*** VANILLA ANIMATIONS */
 const animateLogo = () => {
     if (window.scrollY === 0) {
         resetLogoVariables();
@@ -69,12 +58,10 @@ const animateLogo = () => {
     }
 }
 
-/**
- * GSAP ANIMATIONS
- */
+/*** GSAP ANIMATIONS */
 const isMobile = window.innerWidth < 767;
 
-// Animation initiale du logo
+// Animation du logo
 const logoTl = gsap.timeline({
     scrollTrigger: {
         id: "logo",
@@ -91,8 +78,6 @@ logoTl.from(".page-logo", {
     x: "40vw",
     y: "35vh"
 }, 0);
-
-
 
 // Animation C'est
 // const cElt = document.querySelector('.c');
@@ -137,33 +122,77 @@ logoTl.from(".page-logo", {
 //     });
 
 
+/**** VARIABLES FOR VIDEO * @type {Element} */
+// Create iframe for including youtube video
+const createIframe = () => {
+    const iframeElt = document.createElement('iframe');
+    iframeElt.classList.add('video-screen');
+    iframeElt.setAttribute('id', 'youtube-iframe');
+    iframeElt.setAttribute('src', 'https://www.youtube.com/embed/sdXeXHA08fI?version=3&controls=0&autoplay=1&fs=0&loop=1&mute=1&playlist=sdXeXHA08fI');
+    iframeElt.setAttribute('title', "YouTube video player");
+    iframeElt.setAttribute('frameborder', '0');
+    iframeElt.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+    iframeElt.setAttribute('allowfullscreen', '');
+    iframeElt.onload = console.log('my frame is loaded !')
+    return iframeElt;
+}
 
-// Animation Equipe
-const equipeTitleElt = document.querySelector('.equipe-title');
 
-// const equipeTl = gsap.timeline({
-//     scrollTrigger: {
-//         id: "equipe",
-//         trigger: "#equipe",
-//         start: "top top",
-//         end: "center top",
-//         toggleAction: "play none reverse none",
-//         scrub: 1,
-//         markers: true
-//     }
-// })
-// equipeTl.from('.equipe-title',{
-//     opacity: 0,
-//     y: -500,
-//     scale: 2
-// });
+// Datas for Medias
+const infosMedias = [
+    {
+        name: 'Facebook',
+        url: 'https://www.facebook.com/inharderstylepodcast/',
+        followers: Math.ceil(Math.random(1) * 10000),
+        followers_libelle: 'abonnés',
+        description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, iure itaque. Eveniet pariatur, neque modi, incidunt veniam molestias possimus porro rem laudantium dolore accusamus sed odit inventore tempora optio error.`,
+        logoUrl: 'https://www.pngplay.com/wp-content/uploads/3/Facebook-Logo-PNG-Clipart-Background.png'
 
+    },
+    {
+        name: 'Twitch',
+        url: 'https://www.twitch.tv/inharderstyle',
+        followers: Math.ceil(Math.random(1) * 10000),
+        followers_libelle: 'followers',
+        description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, iure itaque. Eveniet pariatur, neque modi, incidunt veniam molestias possimus porro rem laudantium dolore accusamus sed odit inventore tempora optio error.`,
+        logoUrl: 'https://img2.freepng.fr/20180817/sqp/kisspng-twitch-tv-streaming-media-logo-amazon-com-portable-5b766a353ba909.2292643615344870932444.jpg'
+    },
+    {
+        name: 'Instagram',
+        url: 'https://www.instagram.com/inharderstyle/',
+        followers: Math.ceil(Math.random(1) * 10000),
+        followers_libelle: 'followers',
+        description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, iure itaque. Eveniet pariatur, neque modi, incidunt veniam molestias possimus porro rem laudantium dolore accusamus sed odit inventore tempora optio error.`,
+        logoUrl: 'https://img2.freepng.fr/20180624/kek/kisspng-computer-icons-logo-instagram-blog-akita-5b2ffdee2b6179.0746309015298718541777.jpg'
+    },
+    {
+        name: 'Youtube',
+        url: 'https://www.youtube.com/channel/UCk3w4OaZJ66cmdr0APurPjg',
+        followers: Math.ceil(Math.random(1) * 10000),
+        followers_libelle: 'abonnés',
+        description: `Minima sit amet fugit nulla ipsa amet illo, consectetur adipisicing elit. Magni, iure itaque. Eveniet pariatur, neque modi, incidunt veniam molestias possimus porro rem laudantium dolore accusamus sed odit inventore tempora optio error.`,
+        logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Youtube.png/800px-Youtube.png'
+    },
+    {
+        name: 'Soundcloud',
+        url: 'https://soundcloud.com/insuspect',
+        followers: Math.ceil(Math.random(1) * 10000),
+        followers_libelle: 'followers',
+        description: `Magni, iure itaque. Veniam molestias possimus porro rem laudantium dolore accusamus sed odit inventore tempora optio error. Lorem ipsum dolor sit amet, consectetur adipisicing elit.`,
+        logoUrl: `../assets/imgs/soundCloudLogo.png`
+    }
+];
+
+// Media's creation and insertion
+const mediasContainerElt = document.getElementById('medias-container');
 
 
 /**
  * ************************ Init App ************************ *
  */
 const init = () => {
+    const iframeElt = createIframe();
+    videoContainerElt.appendChild(iframeElt);
     createFrequencyElts();
 
     /**
