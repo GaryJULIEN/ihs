@@ -1,9 +1,11 @@
 @font-face {
     font-family: "COOLVETICA";
     src: url("../assets/fonts/COOLVETICA.woff");
+    font-display: fallback;
 }
 
 body {
+    user-select: none;
     position: relative;
     width: 100%;
     overflow: scroll;
@@ -11,6 +13,9 @@ body {
     margin: 0;
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
+    font-family: -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
+        color: white;
 }
 
 body::-webkit-scrollbar {
@@ -20,8 +25,9 @@ body::-webkit-scrollbar {
 #content-page {
     display: flex;
     flex-direction: column;
+    align-items: center;
     position: relative;
-    height: 3000vh;
+    height: 500vh;
     background-image: url(../assets/imgs/ELEMENTS.png);
     background-position: center;
     background-repeat: repeat;
@@ -29,49 +35,94 @@ body::-webkit-scrollbar {
     background-size: 80%;
 }
 
+a {
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+}
+
+h2 {
+    font-size: 4em;
+    font-weight: 700;
+    align-self: center;
+    transform: translate(-10vw 10vh);
+    margin: 1rem;
+}
+
+h3 {
+    color: #e9292a;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
+button {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    width: 9vw;
+    margin: 1rem;
+    align-self: center;
+}
+
+input {
+    width: 60vw;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    height: 2rem;
+    margin: 1rem;
+}
 
 
 
+/*****************   ASIDE   ***************/
 
-/********************************** LOGO *******************************/
 
-
-.page-logo {
+aside {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+    width: 20%;
+    background-color: #0a0a1694;
     position: fixed;
-    top: 30%;
-    right: 40%;
+}
+
+/* NAV */
+nav {
+    align-items: center;
+    margin-bottom: 15%;
+}
+nav ul li {
+    padding: 1rem;
+    font-size: 1.2rem;
+}
+
+/* LOGO */
+.page-logo {
+    transform: scale(0.5);
     user-select: none;
     width: fit-content;
     padding: 0;
+    z-index: 99999;
 }
-
-@media only screen and (max-width: 767px) {
-    /* smartphone */
-    #content-page {
-        background-size: 140%;
-    }
-    .page-logo {
-        left: 20px;
-    }
-
-}
-
 .page-logo .line p {
     line-height: 74px;
     width: auto;
-    font-family: COOLVETICA, sans-serif;
+    font-family: COOLVETICA, -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+        "Helvetica Neue", sans-serif;
     letter-spacing: -3px;
     font-size: 100px;
     text-align: right;
     color: white;
 }
-
 .page-logo .line:first-child {
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
-
 .page-logo .sound-bars {
     display: flex;
     justify-content: space-between;
@@ -86,3 +137,175 @@ body::-webkit-scrollbar {
     background-color: #e9292a;
 }
 
+
+
+
+/*****************   SECTIONS   ***************/
+
+section {
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    position: relative;
+    justify-content: flex-end;
+    margin: 1rem;
+}
+
+
+
+
+/**********   SECTION 2 : L'équipe  ***********/
+
+/* C'est */
+.c {
+    padding: 3rem;
+    align-self: center;
+}
+.c div {
+    display: inline-block;
+    font-family: sans-serif;
+    font-size: 3em;
+    font-weight: 700;
+    position: relative;
+    text-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Equipe title */
+#equipe {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: space-evenly;
+}
+
+/* Face-Cards */
+.face-cards-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.face-card-container {
+    width: 30vw;
+    background-color: #0b0b17a3;
+    padding: 2rem 1rem;
+    margin: 1rem;
+    box-shadow: 0px 0px 10px #7d7d80d9;
+}
+
+.face-card-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.face-card-img {
+    margin: 0.5rem;
+    padding-bottom: 1rem;
+}
+.face-card-sentence{
+    text-align: center;
+}
+
+
+
+
+/**********   SECTION 3 : Actions  ***********/
+
+
+
+#video_container {
+    display: flex;
+    flex-direction: column;
+}
+#video {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+/**********   SECTION 4 : Medias  ***********/
+
+#medias {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+#medias-container {
+    display: flex;
+    height: fit-content;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.media {
+    align-self: center;
+    padding: 1rem;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+}
+.media p {
+    align-self: center;
+    padding: 1rem;
+}
+.logo-media-container {
+    width: fit-content;
+    align-self: center;
+    height: fit-content;
+}
+
+
+
+
+/**********   SECTION 5 : Contact  ***********/
+
+#contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+#contact-form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 65vh;
+    justify-content: space-evenly;
+}
+#contact-form .message {
+    height: 15rem;
+}
+
+
+
+
+
+
+/**********   CLASSES DYNAMIQUES  ***********/
+
+.full-screen {
+    width: 76vw;
+    height: 100vh;
+    align-self: flex-end;
+}
+
+.video-screen {
+    width: 76vw;
+    height: 90vh;
+    align-self: center;
+}
+
+
+
+/**********   RESPONSIVE  ***********/
+@media only screen and (max-width: 767px) {
+    /* smartphone */
+    #content-page {
+        background-size: 140%;
+    }
+    .page-logo {
+        left: 20px;
+    }
+}
