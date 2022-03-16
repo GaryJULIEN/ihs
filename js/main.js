@@ -250,6 +250,9 @@ const createMedia = () => {
 
 /**** VARIABLES FOR CONTACT **/
 
+// HTML Elements
+const contactFormElt = document.getElementById('contact-form');
+
 
 
 
