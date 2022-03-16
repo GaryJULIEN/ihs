@@ -4,13 +4,20 @@
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, gsap);
 
 
+
+
 /*** HTML ELEMENTS * @type {Element} */
+
+
 const logoElt = document.querySelector('.page-logo');
 const soundBarsElt = logoElt.querySelector('.sound-bars');
 const videoContainerElt = document.getElementById('video-container');
 const infosMediasElt = document.getElementById('infos-medias');
 
+
+
 /*** VARIABLES FOR LOGO * @type {number} */
+
 let yOffset = 0;
 let flowAnimation = 0;
 const originalSizesFrequenceBar = [
@@ -122,7 +129,12 @@ logoTl.from(".page-logo", {
 //     });
 
 
+
+
+
+
 /**** VARIABLES FOR VIDEO * @type {Element} */
+
 // Create iframe for including youtube video
 const createIframe = () => {
     const iframeElt = document.createElement('iframe');
@@ -138,6 +150,12 @@ const createIframe = () => {
 }
 
 
+
+
+
+
+/**** VARIABLES FOR MEDIAS **/
+
 // Datas for Medias
 const infosMedias = [
     {
@@ -146,7 +164,7 @@ const infosMedias = [
         followers: Math.ceil(Math.random(1) * 10000),
         followers_libelle: 'abonnés',
         description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, iure itaque. Eveniet pariatur, neque modi, incidunt veniam molestias possimus porro rem laudantium dolore accusamus sed odit inventore tempora optio error.`,
-        logoUrl: 'https://www.pngplay.com/wp-content/uploads/3/Facebook-Logo-PNG-Clipart-Background.png'
+        imgLogo: 'fa-brands fa-facebook-square'
 
     },
     {
@@ -155,7 +173,7 @@ const infosMedias = [
         followers: Math.ceil(Math.random(1) * 10000),
         followers_libelle: 'followers',
         description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, iure itaque. Eveniet pariatur, neque modi, incidunt veniam molestias possimus porro rem laudantium dolore accusamus sed odit inventore tempora optio error.`,
-        logoUrl: 'https://img2.freepng.fr/20180817/sqp/kisspng-twitch-tv-streaming-media-logo-amazon-com-portable-5b766a353ba909.2292643615344870932444.jpg'
+        imgLogo: 'fa-brands fa-twitch'
     },
     {
         name: 'Instagram',
@@ -163,7 +181,7 @@ const infosMedias = [
         followers: Math.ceil(Math.random(1) * 10000),
         followers_libelle: 'followers',
         description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, iure itaque. Eveniet pariatur, neque modi, incidunt veniam molestias possimus porro rem laudantium dolore accusamus sed odit inventore tempora optio error.`,
-        logoUrl: 'https://img2.freepng.fr/20180624/kek/kisspng-computer-icons-logo-instagram-blog-akita-5b2ffdee2b6179.0746309015298718541777.jpg'
+        imgLogo: 'fa-brands fa-instagram'
     },
     {
         name: 'Youtube',
@@ -171,7 +189,7 @@ const infosMedias = [
         followers: Math.ceil(Math.random(1) * 10000),
         followers_libelle: 'abonnés',
         description: `Minima sit amet fugit nulla ipsa amet illo, consectetur adipisicing elit. Magni, iure itaque. Eveniet pariatur, neque modi, incidunt veniam molestias possimus porro rem laudantium dolore accusamus sed odit inventore tempora optio error.`,
-        logoUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Youtube.png/800px-Youtube.png'
+        imgLogo: 'fa-brands fa-youtube'
     },
     {
         name: 'Soundcloud',
@@ -179,25 +197,77 @@ const infosMedias = [
         followers: Math.ceil(Math.random(1) * 10000),
         followers_libelle: 'followers',
         description: `Magni, iure itaque. Veniam molestias possimus porro rem laudantium dolore accusamus sed odit inventore tempora optio error. Lorem ipsum dolor sit amet, consectetur adipisicing elit.`,
-        logoUrl: `../assets/imgs/soundCloudLogo.png`
+        imgLogo: 'fa-brands fa-soundcloud'
     }
 ];
 
 // Media's creation and insertion
 const mediasContainerElt = document.getElementById('medias-container');
 
+// Create and insert each media of infosMedias
+const createMedia = () => {
+    for (let media of infosMedias) {
+        const newMediaElt = document.createElement('div');
+        newMediaElt.classList.add('media');
 
-/**
- * ************************ Init App ************************ *
- */
+        const logoContainerElt = document.createElement('div');
+        logoContainerElt.classList.add('logo-media-container');
+
+        const logoMediaElt = document.createElement('i');
+        logoMediaElt.setAttribute('class', `${media.imgLogo}`);
+        logoMediaElt.style.height = '10vh';
+        logoMediaElt.style.width = '10vh';
+
+        const titleMediaElt = document.createElement('h3');
+        titleMediaElt.textContent = media.name;
+        
+
+        const descriptionMediaElt = document.createElement('p');
+        descriptionMediaElt.textContent = `${media.followers} ${media.followers_libelle}`;
+
+        const buttonMediaElt = document.createElement('button');
+        buttonMediaElt.type = 'button';
+        buttonMediaElt.textContent = "Voir";
+        buttonMediaElt.setAttribute('url', `${media.url}`);
+        buttonMediaElt.addEventListener('click', () => {
+            window.open(`${media.url}`, '_blank');
+        })
+
+
+        logoContainerElt.appendChild(logoMediaElt);
+        newMediaElt.appendChild(titleMediaElt);
+        newMediaElt.appendChild(logoContainerElt);
+        newMediaElt.appendChild(descriptionMediaElt);
+        newMediaElt.appendChild(buttonMediaElt);
+        mediasContainerElt.appendChild(newMediaElt);
+    }
+}
+
+
+
+
+
+
+/**** VARIABLES FOR CONTACT **/
+
+
+
+
+
+
+
+
+
+
+/******************* Init App *******************/
+
 const init = () => {
     const iframeElt = createIframe();
     videoContainerElt.appendChild(iframeElt);
     createFrequencyElts();
+    createMedia();
 
-    /**
-     * HANDLE SCROLL EVENT
-     */
+    /** HANDLE SCROLL EVENT **/
     document.addEventListener('scroll', () => {
         animateLogo();
     });

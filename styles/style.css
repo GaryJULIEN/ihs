@@ -41,7 +41,11 @@ a {
     color: white;
 }
 
+
+
+
 /*****************   ASIDE   ***************/
+
 
 aside {
     display: flex;
@@ -102,6 +106,9 @@ nav ul li {
     background-color: #e9292a;
 }
 
+
+
+
 /*****************   SECTIONS   ***************/
 
 section {
@@ -110,9 +117,13 @@ section {
     display: -ms-flexbox;
     position: relative;
     justify-content: flex-end;
+    margin: 1rem;
 }
 
-/*   SECTION 2 : L'équipe  */
+
+
+
+/**********   SECTION 2 : L'équipe  ***********/
 
 /* C'est */
 .c {
@@ -128,33 +139,30 @@ section {
     text-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-
 /* Equipe title */
 #equipe {
     display: flex;
-    height: fit-content;
     flex-direction: column;
     position: relative;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 .equipe-title {
     font-size: 4em;
     font-weight: 700;
     align-self: center;
     transform: translate(-10vw 10vh);
+    margin: 1rem;
 }
-
 
 /* Face-Cards */
 .face-cards-list {
-    margin: 2rem;
-    margin-top: 3rem;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 .face-card-container {
     width: 30vw;
-    background-color: #43424787;
+    background-color: #0b0b17a3;
     padding: 2rem 1rem;
     margin: 1rem;
     box-shadow: 0px 0px 10px #7d7d80d9;
@@ -181,7 +189,10 @@ section {
 }
 
 
-/*   SECTION 3 : Actions  */
+
+
+/**********   SECTION 3 : Actions  ***********/
+
 
 
 #video_container {
@@ -190,38 +201,73 @@ section {
 }
 #video {
     display: flex;
+    align-items: center;
     justify-content: center;
 }
 
 
-/*   SECTION 4 : Medias  */
+
+
+/**********   SECTION 4 : Medias  ***********/
 #medias {
     display: flex;
     flex-direction: column;
-    height: fit-content;
+    justify-content: space-evenly;
 }
 #medias h2 {
     font-size: 3rem;
     font-weight: 600;
     align-self: center;
-    padding-bottom: 3rem;
+}
+#medias-container {
+    display: flex;
+    height: fit-content;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.media {
+    align-self: center;
+    padding: 1rem;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+.media h3 {
+    text-align: center;
+    padding: 1.2rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.media p {
+    align-self: center;
+    padding: 1rem;
+}
+.logo-media-container {
+    width: fit-content;
+    align-self: center;
+    height: fit-content;
 }
 
-/*  CLASSES DYNAMIQUES */
+
+
+
+/**********   CLASSES DYNAMIQUES  ***********/
 
 .full-screen {
-    width: 80vw;
+    width: 76vw;
     height: 100vh;
     align-self: flex-end;
 }
 
 .video-screen {
-    width: 75vw;
-    height: 43vw;
+    width: 76vw;
+    height: 90vh;
     align-self: center;
 }
 
 
+
+/**********   RESPONSIVE  ***********/
 @media only screen and (max-width: 767px) {
     /* smartphone */
     #content-page {
