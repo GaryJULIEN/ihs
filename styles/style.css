@@ -27,7 +27,7 @@ body::-webkit-scrollbar {
     flex-direction: column;
     align-items: center;
     position: relative;
-    height: 500vh;
+    height: fit-content;
     background-image: url(../assets/imgs/ELEMENTS.png);
     background-position: center;
     background-repeat: repeat;
@@ -50,8 +50,7 @@ h2 {
 }
 
 h3 {
-    color: #e9292a;
-    font-size: 1.5rem;
+    font-size: 4rem;
     font-weight: 600;
     text-align: center;
     padding-bottom: 1rem;
@@ -73,7 +72,10 @@ input {
     margin: 1rem;
 }
 
-
+p {
+    font-size: 1rem;
+    padding: 1rem;
+}
 
 /*****************   ASIDE   ***************/
 
@@ -117,6 +119,7 @@ nav ul li {
     font-size: 100px;
     text-align: right;
     color: white;
+    padding: 0;
 }
 .page-logo .line:first-child {
     display: flex;
@@ -185,21 +188,27 @@ section {
     justify-content: space-evenly;
 }
 .face-card-container {
+    display: flex;
     width: 30vw;
-    background-color: #0b0b17a3;
+    background-color: #ffffff1f;
+    backdrop-filter: blur(2px);
     padding: 2rem 1rem;
     margin: 1rem;
-    box-shadow: 0px 0px 10px #7d7d80d9;
+    box-shadow: -5px 5px 7px 6px #080811a6;
+    border-top: 1px solid #ffffff59;
+    border-left: 1px solid #ffffff59;
 }
-
-.face-card-container img {
-    width: 100%;
+.face-card-container .label {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     height: 100%;
-    object-fit: cover;
 }
-.face-card-img {
-    margin: 0.5rem;
-    padding-bottom: 1rem;
+.face-card-container img {
+    width: 15vw;
+    height: 15vw;
+    object-fit: cover;
+    border-radius: 50%;
 }
 .face-card-sentence{
     text-align: center;
@@ -240,20 +249,26 @@ section {
 }
 .media {
     align-self: center;
-    padding: 1rem;
+    padding: 2rem;
     margin: 1rem;
     display: flex;
     flex-direction: column;
-    width: 20vw;
-}
-.media p {
-    align-self: center;
-    padding: 1rem;
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    border-left: 1px solid rgba(255, 255, 255, 0.25);
+    opacity: 0.8;
 }
 .logo-media-container {
+    position: relative;
     width: fit-content;
     align-self: center;
     height: fit-content;
+}
+
+.media a {
+    display: inline-flex;
+    height: 100%;
 }
 
 
@@ -287,7 +302,8 @@ section {
 
 .full-screen {
     width: 76vw;
-    height: 100vh;
+    min-height: 100vh;
+    height: fit-content;
     align-self: flex-end;
 }
 

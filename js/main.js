@@ -133,6 +133,19 @@ logoTl.from(".page-logo", {
 
 
 
+/**** VARIABLES FOR EQUIPE */
+const faceCardContainerElts = Array.from(document.querySelectorAll('.face-card-container'));
+console.log(faceCardContainerElts);
+VanillaTilt.init(faceCardContainerElts, {
+    max: 25,
+    speed: 400,
+    glare: true,
+    "max-glare": 0.8
+});
+
+
+
+
 /**** VARIABLES FOR VIDEO * @type {Element} */
 
 // Create iframe for including youtube video
@@ -159,91 +172,123 @@ const createIframe = () => {
 // Datas for Medias
 const infosMedias = [
     {
-        name: 'Facebook',
+        name: 'facebook',
         url: 'https://www.facebook.com/inharderstylepodcast/',
         followers: Math.ceil(Math.random(1) * 10000),
         followers_libelle: 'abonnés',
         description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, iure itaque. Eveniet pariatur, neque modi, incidunt veniam molestias possimus porro rem laudantium dolore accusamus sed odit inventore tempora optio error.`,
-        imgLogo: 'fa-brands fa-facebook-square'
-
+        imgLogo: 'fa-brands fa-facebook-square',
+        colors: [
+            '#3b5998',          // bleu strandard
+            '#1877f2'           // Bleu clair
+        ]
     },
     {
-        name: 'Twitch',
+        name: 'twitch',
         url: 'https://www.twitch.tv/inharderstyle',
         followers: Math.ceil(Math.random(1) * 10000),
         followers_libelle: 'followers',
         description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, iure itaque. Eveniet pariatur, neque modi, incidunt veniam molestias possimus porro rem laudantium dolore accusamus sed odit inventore tempora optio error.`,
-        imgLogo: 'fa-brands fa-twitch'
+        imgLogo: 'fa-brands fa-twitch',
+        colors: [
+            '#9146ff',          // violet
+            '#f0f0ff',          // blanc cassé
+            '#000'              // noir
+        ]
     },
     {
-        name: 'Instagram',
+        name: 'instagram',
         url: 'https://www.instagram.com/inharderstyle/',
         followers: Math.ceil(Math.random(1) * 10000),
         followers_libelle: 'followers',
         description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, iure itaque. Eveniet pariatur, neque modi, incidunt veniam molestias possimus porro rem laudantium dolore accusamus sed odit inventore tempora optio error.`,
-        imgLogo: 'fa-brands fa-instagram'
+        imgLogo: 'fa-brands fa-instagram',
+        colors: [
+            '#c32aa3',          // magenta
+            '#4c5fd7',          // bleu pastel
+            '#7232bd',          // violet pastel
+            '#f46f30',          // orange pastel
+            '#ffdc7d'          // jaune pastel
+        ]
     },
     {
-        name: 'Youtube',
+        name: 'youtube',
         url: 'https://www.youtube.com/channel/UCk3w4OaZJ66cmdr0APurPjg',
         followers: Math.ceil(Math.random(1) * 10000),
         followers_libelle: 'abonnés',
         description: `Minima sit amet fugit nulla ipsa amet illo, consectetur adipisicing elit. Magni, iure itaque. Eveniet pariatur, neque modi, incidunt veniam molestias possimus porro rem laudantium dolore accusamus sed odit inventore tempora optio error.`,
-        imgLogo: 'fa-brands fa-youtube'
+        imgLogo: 'fa-brands fa-youtube',
+        colors: [
+            '#ff0000',          // rouge
+            '#282828',          // gris souris
+            '#ffffff'           // b
+        ]
     },
     {
-        name: 'Soundcloud',
+        name: 'soundcloud',
         url: 'https://soundcloud.com/insuspect',
         followers: Math.ceil(Math.random(1) * 10000),
         followers_libelle: 'followers',
         description: `Magni, iure itaque. Veniam molestias possimus porro rem laudantium dolore accusamus sed odit inventore tempora optio error. Lorem ipsum dolor sit amet, consectetur adipisicing elit.`,
-        imgLogo: 'fa-brands fa-soundcloud'
+        imgLogo: 'fa-brands fa-soundcloud',
+        colors: [
+            '#ff5500',          // orange soundcloud
+            '#ff7700',          // jaune orangé
+            '#ff3300',          // orange foncé
+            '#ff4B00',          // orange clair
+            '#ff3801'           // orange moyen
+        ]
     }
 ];
 
 // Media's creation and insertion
 const mediasContainerElt = document.getElementById('medias-container');
 
+
+let mediaElts;
 // Create and insert each media of infosMedias
 const createMedia = () => {
     for (let media of infosMedias) {
         const newMediaElt = document.createElement('div');
         newMediaElt.classList.add('media');
+        newMediaElt.setAttribute('data-tilt', '');
 
+        if (media.name === "instagram"){
+            newMediaElt.style.background = 'radial-gradient(circle at 30% 107%, #fdf497 0%, #ffdc7d 5%, #f46f30 45%,#c32aa3 60%,#7232bd 75%, #285AEB 90%)';
+        } else {
+            newMediaElt.style.backgroundColor = media.colors[0];
+        };
+        
         const logoContainerElt = document.createElement('div');
         logoContainerElt.classList.add('logo-media-container');
 
         const logoMediaElt = document.createElement('i');
         logoMediaElt.setAttribute('class', `${media.imgLogo}`);
-        logoMediaElt.style.height = '10vh';
-        logoMediaElt.style.width = '10vh';
+        logoMediaElt.style.height = '8vh';
+        logoMediaElt.style.width = '8vh';
 
-        const titleMediaElt = document.createElement('h3');
-        titleMediaElt.textContent = media.name;
+        const linkMediaElt = document.createElement('a');
+        linkMediaElt.setAttribute('href', `${media.url}`);
+        linkMediaElt.setAttribute('target', '_blank');
+        linkMediaElt.setAttribute('class', `${media.url}`);
         
-
-        const descriptionMediaElt = document.createElement('p');
-        descriptionMediaElt.textContent = `${media.followers} ${media.followers_libelle}`;
-
-        const buttonMediaElt = document.createElement('button');
-        buttonMediaElt.type = 'button';
-        buttonMediaElt.textContent = "Voir";
-        buttonMediaElt.setAttribute('url', `${media.url}`);
-        buttonMediaElt.addEventListener('click', () => {
-            window.open(`${media.url}`, '_blank');
-        })
-
-
-        logoContainerElt.appendChild(logoMediaElt);
-        newMediaElt.appendChild(titleMediaElt);
+        linkMediaElt.appendChild(logoMediaElt);
+        logoContainerElt.appendChild(linkMediaElt);
         newMediaElt.appendChild(logoContainerElt);
-        newMediaElt.appendChild(descriptionMediaElt);
-        newMediaElt.appendChild(buttonMediaElt);
+        newMediaElt.appendChild(linkMediaElt);
         mediasContainerElt.appendChild(newMediaElt);
+
+
+        mediaElts = Array.from(document.querySelectorAll('.media'));
+        console.log(mediaElts);
+        VanillaTilt.init(mediaElts, {
+            max: 25,
+            speed: 400,
+            glare: true,
+            "max-glare": 1
+        });
     }
 }
-
-
 
 
 
