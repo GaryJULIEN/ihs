@@ -135,7 +135,6 @@ logoTl.from(".page-logo", {
 
 /**** VARIABLES FOR EQUIPE */
 const faceCardContainerElts = Array.from(document.querySelectorAll('.face-card-container'));
-console.log(faceCardContainerElts);
 VanillaTilt.init(faceCardContainerElts, {
     max: 25,
     speed: 400,
@@ -153,12 +152,12 @@ const createIframe = () => {
     const iframeElt = document.createElement('iframe');
     iframeElt.classList.add('video-screen');
     iframeElt.setAttribute('id', 'youtube-iframe');
-    iframeElt.setAttribute('src', 'https://www.youtube.com/embed/sdXeXHA08fI?version=3&controls=0&autoplay=1&fs=0&loop=1&mute=1&playlist=sdXeXHA08fI');
+    iframeElt.setAttribute('src', 'https://www.youtube.com/embed/sdXeXHA08fI?version=3&controls=0&autoplay=0&fs=0&loop=1&mute=0&playlist=sdXeXHA08fI');
     iframeElt.setAttribute('title', "YouTube video player");
     iframeElt.setAttribute('frameborder', '0');
     iframeElt.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
     iframeElt.setAttribute('allowfullscreen', '');
-    iframeElt.onload = console.log('my frame is loaded !')
+    // iframeElt.onload = console.log('my frame is loaded !')
     return iframeElt;
 }
 
@@ -280,7 +279,6 @@ const createMedia = () => {
 
 
         mediaElts = Array.from(document.querySelectorAll('.media'));
-        console.log(mediaElts);
         VanillaTilt.init(mediaElts, {
             max: 25,
             speed: 400,
@@ -297,10 +295,6 @@ const createMedia = () => {
 
 // HTML Elements
 const contactFormElt = document.getElementById('contact-form');
-
-
-
-
 
 
 
