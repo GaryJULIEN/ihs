@@ -5,9 +5,8 @@
 }
 
 body {
-    user-select: none;
-    position: relative;
     width: 100%;
+    position: relative;
     overflow: scroll;
     padding: 0;
     margin: 0;
@@ -15,24 +14,30 @@ body {
     scrollbar-width: none; /* Firefox */
     font-family: -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
         sans-serif;
-        color: white;
-}
-
-body::-webkit-scrollbar {
-    display: none;
-}
-
-#content-page {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
+    font-size: 1.2rem;
+    color: white;
     height: fit-content;
     background-image: url(../assets/imgs/ELEMENTS.png);
     background-position: center;
     background-repeat: repeat;
     background-attachment: fixed;
     background-size: 80%;
+    user-select: none;
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+
+#page {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#page-content {
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
 }
 
 a {
@@ -40,38 +45,32 @@ a {
     text-decoration: none;
     color: white;
 }
-
 h2 {
-    font-size: 4em;
-    font-weight: 700;
+    font-size: 4vmax;
+    font-weight: 800;
     align-self: center;
-    transform: translate(-10vw 10vh);
+    text-align: center;
     margin: 1rem;
 }
-
 h3 {
-    font-size: 4rem;
+    font-size: 3vw;
     font-weight: 600;
-    text-align: center;
-    padding-bottom: 1rem;
+    text-align: start;
 }
-
 button {
     font-size: 1.2rem;
     padding: 0.5rem;
     width: 110px;
-    margin: 1rem;
+    margin: 2rem;
     align-self: center;
 }
-
 input {
     width: 60vw;
     padding-left: 1rem;
     padding-right: 1rem;
     height: 2rem;
-    margin: 1rem;
+    margin-bottom: 1.5rem;
 }
-
 p {
     font-size: 1rem;
     padding: 1rem;
@@ -83,40 +82,29 @@ p {
 
 /*****************   ASIDE   ***************/
 
-
 aside {
     display: flex;
     flex-direction: column;
-    align-self: flex-start;
     align-items: center;
     justify-content: space-between;
     height: 100vh;
     width: 20vw;
     min-width: 200px;
     background-color: #0a0a1694;
+    left: 0;
     position: fixed;
     z-index: 99999;
 }
 
-/* NAV */
-nav {
-    align-items: center;
-    margin-bottom: 15%;
-}
-nav ul li {
-    padding: 1rem;
-    font-size: 1.2rem;
-}
-
 /* LOGO */
-.page-logo {
-    transform: scale(0.5);
-    user-select: none;
+.ihs-logo {
     width: fit-content;
     padding: 0;
     z-index: 99999;
+    transform: scale(0.5);
+
 }
-.page-logo .line p {
+.ihs-logo .line p {
     line-height: 74px;
     width: auto;
     font-family: COOLVETICA, -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
@@ -127,24 +115,34 @@ nav ul li {
     color: white;
     padding: 0;
 }
-.page-logo .line:first-child {
+.ihs-logo .line:first-child {
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
-.page-logo .sound-bars {
+.ihs-logo .sound-bars {
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-sizing: border-box;
-    padding-right: 4px;
+    padding-right: 2px;
     width: 255px;
 }
-.page-logo .sound-bars .frequence-bar {
+.ihs-logo .sound-bars .frequence-bar {
     width: 4px;
     margin: 0 1px;
     background-color: #e9292a;
 }
+/* NAV */
+nav {
+    align-items: center;
+    margin-bottom: 15%;
+}
+nav ul li {
+    padding: 1rem;
+    font-size: 1.2rem;
+}
+
 
 
 
@@ -153,95 +151,79 @@ nav ul li {
 
 section {
     display: flex;
-    display: -webkit-box;
-    display: -ms-flexbox;
+    flex-direction: column;
     position: relative;
-    justify-content: flex-end;
-    margin: 1rem;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.full-screen {
+    width: 77vw;
+    min-height: 100vh;
+    height: fit-content;
+    padding: 1rem;
 }
 
 
 
 
-/**********   SECTION 2 : L'équipe  ***********/
-
-/* C'est */
-.c {
-    padding: 3rem;
-    align-self: center;
-}
-.c div {
-    display: inline-block;
-    font-family: sans-serif;
-    font-size: 3em;
-    font-weight: 700;
-    position: relative;
-    text-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-}
+/*****************   EQUIPE   ***************/
 
 /* Equipe title */
 #equipe {
-    display: flex;
-    flex-direction: column;
-    position: relative;
     justify-content: space-evenly;
 }
 
 /* Face-Cards */
-.face-cards-list {
+.members-cards-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
-.face-card-container {
+.member-card {
     display: flex;
+    justify-content: space-between;
+    min-width: 400px;
     width: 30vw;
-    min-width: 300px;
     background-color: #ffffff1f;
     backdrop-filter: blur(2px);
-    padding: 2rem 1rem;
+    padding: 2vw 2vw;
     margin: 1rem;
     box-shadow: -5px 5px 7px 6px #080811a6;
-    border-top: 1px solid #ffffff59;
-    border-left: 1px solid #ffffff59;
+    border-top: 1px solid #ffffff33;
+    border-right: 1px solid #ffffff33;
 }
-.face-card-container .label {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    height: 100%;
+.member-infos {
+    padding-right: 1vw;
+    align-self: center;
 }
-.face-card-container img {
+.member-card img {
     width: 15vw;
     height: 15vw;
     object-fit: cover;
-    border-radius: 50%;
 }
-.face-card-sentence{
+.member-sentence {
     text-align: center;
 }
 
 
 
 
-/**********   SECTION 3 : Actions  ***********/
+/*****************   ACTIONS   ***************/
 
-
-
-#video_container {
-    display: flex;
-    flex-direction: column;
-}
 #video {
-    display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+}
+.video-screen {
+    width: 60vw;
+    height: 43vw;
+    align-self: center;
 }
 
 
 
 
-/**********   SECTION 4 : Medias  ***********/
+/*****************   MÉDIAS   ***************/
 
 #medias {
     display: flex;
@@ -254,122 +236,75 @@ section {
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
+
 .media {
-    align-self: center;
+    width: 12vh;
+    height: 12vh;
     padding: 2rem;
-    margin: 1rem;
+    margin: 2rem;
     display: flex;
-    flex-direction: column;
     box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.25);
     border-left: 1px solid rgba(255, 255, 255, 0.25);
     opacity: 0.8;
-}
-.logo-media-container {
-    position: relative;
-    width: fit-content;
-    align-self: center;
-    height: fit-content;
-}
-
-.media a {
-    display: inline-flex;
-    height: 100%;
-}
-
-
-
-
-/**********   SECTION 5 : Contact  ***********/
-
-#contact {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
 }
+.svg-inline--fa {
+    height: 6rem;
+    color: white;
+}
+.facebook {
+    background: #3b5998;
+}
+.twitch {
+    background: #9146ff;
+}
+.instagram{
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #ffdc7d 5%, #f46f30 45%,#c32aa3 60%,#7232bd 75%, #285AEB 90%);
+}
+.youtube{
+    background: #ff0000;
+}
+.soundcloud {
+    background: #ff5500;
+}
+
+
+
+
+/*****************   CONTACT   ***************/
+
 #contact-form {
+    height: 70vh;
     display: flex;
-    justify-content: center;
     flex-direction: column;
-    min-height: 65vh;
     justify-content: space-evenly;
 }
-#contact-form .message {
-    height: 15rem;
+#contact-form p {
+    padding-left: 0.2rem;
 }
 
 
 
 
+/**************************   RESPONSIVE  *************************/
 
-
-/**********   CLASSES DYNAMIQUES  ***********/
-
-.full-screen {
-    width: 76vw;
-    min-height: 100vh;
-    height: fit-content;
-    align-self: flex-end;
-}
-
-.video-screen {
-    width: 76vw;
-    height: 43vw;
-    align-self: center;
-}
-
-
-
-
-/**********   RESPONSIVE  ***********/
-
-@media only screen and (max-width: 912px) {
-    aside {
-        width: 100vw;
-        height: 15vh;
-        flex-direction: row;
-        justify-content: space-evenly;
-    }
-    nav {
-        align-items: flex-end;
-        margin-bottom: 0;
-        padding-right: 2rem;
-    }
-    nav ul {
-        display: flex;
-    }
-    section {
-        margin: 0;
-        padding-top: 7rem;
-    }
-    h2 {
-        font-size: 3rem;
-    }
-    h3 {
-        font-size: 2rem;
-    }
-    .page-logo {
-        height: fit-content;
-        width: fit-content;
-    }
-    .full-screen {
-        padding-top: 7rem;
-        margin-top: -7rem;
-        width: 100vw;
-        height: 70vh;
-        align-self: flex-end;
-    }
-
-}
-
-@media only screen and (max-width: 767px) {
-    /* smartphone */
-    #content-page {
+@media only screen and (max-width: 975px) {
+    body {
         background-size: 140%;
     }
-    .page-logo {
-        left: 20px;
+    #page-content {
+        width: 70vw;
+    }
+    .full-screen {
+        width: 77vw;
     }
 }
+
+@media only screen and (max-width: 799px) {
+    /* smartphone */
+}
+
+
