@@ -109,9 +109,26 @@ VanillaTilt.init(memberCardElts, {
 /************************ ACTION **********************/
 
 /*** HTML Elements * @type {Element} */
-const videoContainerElt = document.getElementById('video-container');
+const videoBlanketElt = document.querySelector('.video-blanket');
+console.log(videoBlanketElt);
 // Animation apparition de la video et disparition au scroll
-
+const videoTl = gsap.timeline({
+    scrollTrigger: {
+        id: "video",
+        trigger: "#video",
+        start: "top center",
+        end: "bottom top",
+        toggleAction: "play none reverse none",
+        scrub: 1.5,
+        markers: true,
+    }
+});
+videoTl.to(".video-blanket", {
+    opacity: 0
+});
+videoTl.to(".video-blanket", {
+    opacity: 1
+});
 
 
 
