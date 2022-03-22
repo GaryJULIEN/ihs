@@ -74,8 +74,7 @@ const logoTl = gsap.timeline({
         start: "top top",
         end: "bottom top",
         toggleAction: "play none reverse none",
-        scrub: 1.5,
-        markers: true,
+        scrub: 1.5
     }
 });
 logoTl.from(".ihs-logo", {
@@ -91,7 +90,62 @@ logoTl.from(".ihs-logo", {
 /************************ EQUIPE **********************/
 
 /*** HTML Elements * @type {Element} */
-const memberCardElts = Array.from(document.querySelectorAll('.member-card'));
+const   memberCardElts = Array.from(document.querySelectorAll('.member-card'));
+
+/*** Animation GSAP for the equipe's section **/
+
+// C'est
+const cTl = gsap.timeline({
+    scrollTrigger: {
+        id: "c",
+        trigger: "#equipe",
+        start: "top center",
+        end: "top top+=30%",
+        toggleAction: "play none none replay",
+        scrub: 1.5,
+        markers: true
+    }
+});
+cTl.from(".c", {
+    opacity: "0",
+    scale: 14
+}),
+cTl.to(".c", {
+    ease: "circ.out",
+    color: "dark-grey",
+    duration: 8,
+    opacity: "1"
+}),
+cTl.to(".c", {
+    opacity: 0,
+    duration: 2
+});
+
+// Une équipe
+const equipeTitleTl = gsap.timeline({
+    scrollTrigger: {
+        id: "equipe-title",
+        trigger: "#equipe",
+        start: "top top+=30%",
+        end: "top top",
+        toggleAction: "play none none none",
+        scrub: 1.5,
+        markers: true
+    }
+}, 1);
+equipeTitleTl.from(".equipe-title", {
+    opacity: "0",
+    scale: 14
+}),
+equipeTitleTl.to(".equipe-title", {
+    ease: "circ.out",
+    duration: 8,
+    opacity: "1",
+    y: -80
+});
+
+// Member cards
+
 
 /*** Animation Vanilla.tilt **/
 VanillaTilt.init(memberCardElts, {
@@ -110,8 +164,7 @@ VanillaTilt.init(memberCardElts, {
 
 /*** HTML Elements * @type {Element} */
 const videoBlanketElt = document.querySelector('.video-blanket');
-console.log(videoBlanketElt);
-// Animation apparition de la video et disparition au scroll
+// Animation apparition de la video et disparition au scroll - GSAP
 const videoTl = gsap.timeline({
     scrollTrigger: {
         id: "video",
@@ -119,8 +172,7 @@ const videoTl = gsap.timeline({
         start: "top center",
         end: "bottom top",
         toggleAction: "play none reverse none",
-        scrub: 1.5,
-        markers: true,
+        scrub: 1
     }
 });
 videoTl.to(".video-blanket", {
