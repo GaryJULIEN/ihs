@@ -1,7 +1,7 @@
 "use strict";
 
 // Allow us to use GSAP animations
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, gsap);
 
 
 
@@ -66,7 +66,7 @@ const animateLogo = () => {
 
 /************************ ACCUEIL **********************/
 
-/**** GSAP Animation for logo */ 
+/**** GSAP Animation for logo */
 const logoTl = gsap.timeline({
     scrollTrigger: {
         id: "logo",
@@ -89,67 +89,64 @@ logoTl.from(".ihs-logo", {
 
 /************************ EQUIPE **********************/
 
-/*** HTML Elements * @type {Element} */
-const   memberCardElts = Array.from(document.querySelectorAll('.member-card'));
 
-/*** Animation GSAP for the equipe's section **/
-
-// C'est
+// C'est - Animation GSAP
 const cTl = gsap.timeline({
     scrollTrigger: {
         id: "c",
         trigger: "#equipe",
         start: "top center",
-        end: "top top+=30%",
-        toggleAction: "play none none replay",
-        scrub: 1.5,
-        markers: true
+        end: "top top+=30%",        
+        ease: "circ.in",
+        toggleAction: "play none none reset",
+        scrub: 1.5
     }
 });
 cTl.from(".c", {
     opacity: "0",
-    scale: 14
+    scale: "0",
+    duration: "1"
 }),
-cTl.to(".c", {
-    ease: "circ.out",
-    color: "dark-grey",
-    duration: 8,
-    opacity: "1"
-}),
-cTl.to(".c", {
-    opacity: 0,
-    duration: 2
-});
+    cTl.to(".c", {
+        duration: "8",
+        opacity: "1",
+        scale: 1
+    }),
+    cTl.to(".c", {
+        xPercent: "600"
+    });
 
-// Une équipe
+
+// Une équipe - Animation GSAP
 const equipeTitleTl = gsap.timeline({
     scrollTrigger: {
         id: "equipe-title",
         trigger: "#equipe",
-        start: "top top+=30%",
-        end: "top top",
+        start: "top +300vh",
+        end: "bottom +600vh",
         toggleAction: "play none none none",
-        scrub: 1.5,
+        duration: "3.5",
+        scrub: 3,
         markers: true
     }
 }, 1);
 equipeTitleTl.from(".equipe-title", {
     opacity: "0",
-    scale: 14
+    scale: 14,
+    y: -800
 }),
-equipeTitleTl.to(".equipe-title", {
-    ease: "circ.out",
-    duration: 8,
-    opacity: "1",
-    y: -80
-});
+    equipeTitleTl.to(".equipe-title", {
+        ease: "circ.out",
+        duration: 8,
+        opacity: "1",
+        y: -10
+    });
 
-// Member cards
-
-
-/*** Animation Vanilla.tilt **/
+// Member cards - Animation Vanilla.tilt
+/*** HTML Elements * @type {Element} */
+const memberCardElts = Array.from(document.querySelectorAll('.member-card'));
 VanillaTilt.init(memberCardElts, {
-    max: 25,
+    max: 30,
     speed: 400,
     glare: true,
     "max-glare": 0.8
@@ -160,27 +157,68 @@ VanillaTilt.init(memberCardElts, {
 
 
 
-/************************ ACTION **********************/
+/************************ ACTIONS **********************/
 
-/*** HTML Elements * @type {Element} */
-const videoBlanketElt = document.querySelector('.video-blanket');
 // Animation apparition de la video et disparition au scroll - GSAP
 const videoTl = gsap.timeline({
     scrollTrigger: {
         id: "video",
-        trigger: "#video",
+        trigger: "#actions",
         start: "top center",
         end: "bottom top",
         toggleAction: "play none reverse none",
-        scrub: 1
+        scrub: 1.5
     }
 });
 videoTl.to(".video-blanket", {
     opacity: 0
+}),
+    videoTl.to(".video-blanket", {
+        opacity: 1
+    });
+
+
+// Animation évènements
+
+const evts = gsap.utils.toArray(".evenements");
+console.log(evts);
+
+const evtsTl = gsap.timeline({
+    scrollTrigger: {
+        id: "actions-title",
+        trigger: "#actions",
+        pin: true,
+        stagger: 0.1,
+        scrub: 3,
+        start: "top top+=40vh",
+        end: "bottom bottom",
+        markers: true
+    }
 });
-videoTl.to(".video-blanket", {
-    opacity: 1
-});
+evtsTl.from(".evenements", {
+    y: 0,
+    ease: "ease.out"
+}),
+    evtsTl.to(".evenements", {
+        yPercent: "-100",
+        opacity: 1
+    }),
+    evtsTl.to(".evenements", {
+        yPercent: "-200"
+    }),
+    evtsTl.to(".evenements", {
+        yPercent: "-300"
+    }),
+    evtsTl.to(".evenements", {
+        yPercent: "-400"
+    }),
+    evtsTl.to(".evenements", {
+        yPercent: "-500"
+    }),
+    evtsTl.to(".evenements", {
+        yPercent: "-600",
+    });
+
 
 
 
@@ -198,9 +236,11 @@ videoTl.to(".video-blanket", {
 const init = () => {
     createFrequencyElts();
 
+
     /** HANDLE SCROLL EVENT **/
     document.addEventListener('scroll', () => {
         animateLogo();
+        wordflick();
     });
 }
 
