@@ -94,26 +94,31 @@ logoTl.from(".ihs-logo", {
 const cTl = gsap.timeline({
     scrollTrigger: {
         id: "c",
-        trigger: "#equipe",
-        start: "top center",
-        end: "top top+=30%",        
+        trigger: ".c",
+        start: "top top+=70%",
+        end: "top top+=30%",
         ease: "circ.in",
         toggleAction: "play none none reset",
-        scrub: 1.5
+        scrub: 1.5,
+        markers: true
     }
 });
 cTl.from(".c", {
     opacity: "0",
-    scale: "0",
+    scale: "4",
+    marginLeft: "150vw",
     duration: "1"
 }),
     cTl.to(".c", {
-        duration: "8",
+        ease: "bounce",
+        fontStyle: "initial",
+        marginLeft: "-20vw",
         opacity: "1",
-        scale: 1
+        duration: "1.5"
     }),
     cTl.to(".c", {
-        xPercent: "600"
+        opacity: 0,
+        duration: "0.5"
     });
 
 
@@ -132,10 +137,13 @@ const equipeTitleTl = gsap.timeline({
 }, 1);
 equipeTitleTl.from(".equipe-title", {
     opacity: "0",
-    scale: 14,
+    ease: "bounce",
+    marginLeft: "-20vw",
     y: -800
 }),
     equipeTitleTl.to(".equipe-title", {
+        ease: "bounce",
+        fontStyle: "initial",
         ease: "circ.out",
         duration: 8,
         opacity: "1",
@@ -152,6 +160,26 @@ VanillaTilt.init(memberCardElts, {
     "max-glare": 0.8
 });
 
+// Animate the newly-visible member-cards
+let observer = new IntersectionObserver(function (memberCardElts, self) {
+    // Get an array of the newly visible member card
+    let targets = memberCardElts.map(memberCard => {
+        console.log(memberCard);
+        console.log(memberCard.intersectionRatio);
+
+        if (memberCard.isIntersecting) {
+            self.unobserve(memberCard.target);
+            console.log(memberCard.target);
+            return memberCard.target;
+        }
+    });
+
+    // Animate the newly-visible member cards
+    gsap.to(targets, {
+        opacity: 1,
+        stagger: 0.2
+    });
+});
 
 
 
@@ -181,7 +209,6 @@ videoTl.to(".video-blanket", {
 // Animation évènements
 
 const evts = gsap.utils.toArray(".evenements");
-console.log(evts);
 
 const evtsTl = gsap.timeline({
     scrollTrigger: {
@@ -240,7 +267,6 @@ const init = () => {
     /** HANDLE SCROLL EVENT **/
     document.addEventListener('scroll', () => {
         animateLogo();
-        wordflick();
     });
 }
 

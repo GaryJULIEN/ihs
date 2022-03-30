@@ -211,28 +211,33 @@ section {
 
 
 
+
+
 /*****************   EQUIPE   ***************/
 
 #equipe {
     justify-content: space-evenly;
     height: 100vh;
-    padding-top: 2vh;;
+    padding-top: 20vh;
 }
 
+/* Title */
 .word {
-    font-size: 10vh;
+    font-size: 20vh;
     font-weight: 800;
     display: inline-block;
     text-shadow: -1px 1px 0px #cccccc, -2px 2px 0px #b1b1b3, -3px 3px 0px #a6a6a8, -4px 4px 0px #737373;
 }
-
-.equipe-title {
-    text-transform: uppercase;
+.c-container {
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
 .c {
     overflow: hidden;
 }
+
 
 /* Member-Cards */
 .members-cards-list {
@@ -271,6 +276,7 @@ section {
 
 
 /*****************   ACTIONS   ***************/
+
 #actions {
     justify-content: flex-start;
     align-items: center;
@@ -284,9 +290,6 @@ section {
     overflow: hidden;
     position: fixed;
 }
-/* #evts-list {
-    animation: 8s infinite slidein;
-} */
 .evenements {
     display: inline-block;
     font-size: 10vh;
@@ -384,7 +387,7 @@ section {
 
 
 
-/**************************   RESPONSIVE  *************************/
+/*****************   RESPONSIVE  ***************/
 
 @media only screen and (max-width: 975px) {
     body {
