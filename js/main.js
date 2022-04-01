@@ -1,7 +1,7 @@
 "use strict";
 
 // Allow us to use GSAP animations
-gsap.registerPlugin(ScrollTrigger, gsap);
+gsap.registerPlugin(ScrollTrigger);
 
 
 
@@ -100,7 +100,7 @@ const cTl = gsap.timeline({
         ease: "circ.in",
         toggleAction: "play none none reset",
         scrub: 1.5,
-        markers: true
+        // markers: true
     }
 });
 cTl.from(".c", {
@@ -125,14 +125,14 @@ cTl.from(".c", {
 // Une équipe - Animation GSAP
 const equipeTitleTl = gsap.timeline({
     scrollTrigger: {
-        id: "equipe-title",
+        id: "equipe",
         trigger: "#equipe",
         start: "top +300vh",
         end: "bottom +600vh",
         toggleAction: "play none none none",
         duration: "3.5",
         scrub: 3,
-        markers: true
+        // markers: true
     }
 }, 1);
 equipeTitleTl.from(".equipe-title", {
@@ -142,15 +142,17 @@ equipeTitleTl.from(".equipe-title", {
     y: -800
 }),
     equipeTitleTl.to(".equipe-title", {
-        ease: "bounce",
-        fontStyle: "initial",
         ease: "circ.out",
-        duration: 8,
+        fontStyle: "initial",
+        marginLeft: "0",
+        duration: 3,
         opacity: "1",
         y: -10
     });
 
+
 // Member cards - Animation Vanilla.tilt
+
 /*** HTML Elements * @type {Element} */
 const memberCardElts = Array.from(document.querySelectorAll('.member-card'));
 VanillaTilt.init(memberCardElts, {
@@ -160,30 +162,50 @@ VanillaTilt.init(memberCardElts, {
     "max-glare": 0.8
 });
 
-// Animate the newly-visible member-cards
-let observer = new IntersectionObserver(function (memberCardElts, self) {
-    // Get an array of the newly visible member card
-    let targets = memberCardElts.map(memberCard => {
-        console.log(memberCard);
-        console.log(memberCard.intersectionRatio);
+// Intersection observer code
+const config = { threshold: 0.5 };
 
-        if (memberCard.isIntersecting) {
-            self.unobserve(memberCard.target);
-            console.log(memberCard.target);
-            return memberCard.target;
+// Animate the newly-visible member-cards
+let observer = new IntersectionObserver(function (entries, self) {
+    // Get an array of the newly visible member card
+    let targets = entries.map(entry => {
+        if (entry.isIntersecting) {
+            console.log('Entré !');
+            self.unobserve(entry.target);
+            return entry.target;
         }
     });
 
-    // Animate the newly-visible member cards
-    gsap.to(targets, {
-        opacity: 1,
-        stagger: 0.2
-    });
+    // Call our animation function
+    fadeIn(targets);
+}, config);
+
+memberCardElts.forEach(memberCard => {
+    observer.observe(memberCard);
 });
 
 
+// Fades in the targets given
+function fadeIn(targets) {
+// Using GSAP's staggers!
+    const targetsTl = gsap.timeline({
+        scrollTrigger: {
+            id: 'memberCards',
+            trigger: '#equipe',
+            start: 'top center-=200vh',
+            end: 'bottom bottom',
+            scrub: 1,
+            // markers: true
+        }
+    });
+    targetsTl.to(targets, { 
+    opacity: 1, 
+    stagger: {
+        amount: 0.5
+    }
+  });
 
-
+}
 
 /************************ ACTIONS **********************/
 
@@ -219,7 +241,7 @@ const evtsTl = gsap.timeline({
         scrub: 3,
         start: "top top+=40vh",
         end: "bottom bottom",
-        markers: true
+        // markers: true
     }
 });
 evtsTl.from(".evenements", {

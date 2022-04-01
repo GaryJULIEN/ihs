@@ -205,7 +205,7 @@ section {
     width: 77vw;
     min-height: 100vh;
     height: fit-content;
-    padding: 1rem;
+    padding: 1vw;
 }
 
 
@@ -223,7 +223,7 @@ section {
 
 /* Title */
 .word {
-    font-size: 20vh;
+    font-size: 9vmax;
     font-weight: 800;
     display: inline-block;
     text-shadow: -1px 1px 0px #cccccc, -2px 2px 0px #b1b1b3, -3px 3px 0px #a6a6a8, -4px 4px 0px #737373;
@@ -246,10 +246,11 @@ section {
     justify-content: space-evenly;
 }
 .member-card {
+    opacity: 0;
     display: flex;
     justify-content: space-between;
     padding: 2vw 2vw;
-    margin: 2vw;
+    margin-bottom: 2vw;
     min-width: 400px;
     width: 25vw;
     background-color: #ffffff1f;
@@ -284,7 +285,7 @@ section {
     position: relative;
 }
 #actions-title-container {
-    padding-top: 3vh;
+    margin-top: 3vh;
     width: 77vw;
     height: 22vh;
     overflow: hidden;
